@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investigasi Rahasia</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    padding: 20px;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.card {
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.85);
+    width: 100%;
+    max-width: 520px;
+    padding: 40px 30px;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: fadeIn 0.8s ease;
+    position: relative;
+}
+
+h1 {
+    font-size: 18px;
+    color: #ff3f8e;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+button {
+    background: linear-gradient(135deg, #ff4fa3, #ff85c1);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(255, 79, 163, 0.4);
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 79, 163, 0.6);
+}
+
+img {
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 20px 0;
+    border: 6px solid white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    animation: pop 0.6s ease;
+}
+
+@keyframes pop {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 12px;
+    color: #777;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    top: -10px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 30px 20px;
+    }
+    img {
+        width: 140px;
+        height: 140px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="content">
+    <h1>⚠️PEMBERITAHUAN PENTING⚠️</h1>
+    <p>Sistem mendeteksi adanya peningkatan level kehidupan secara diam-diam di sekitar kita...</p>
+    <button onclick="nextStep()">🔎 Selidiki Sekarang</button>
+
+    <div class="footer">
+        Dibuat dengan niat baik oleh Raihan Addriansyah
+    </div>
+</div>
+
+<script>
+function nextStep() {
+    document.getElementById("content").innerHTML = `
+        <h1>Hasil Investigasi 🔍</h1>
+        <p>Setelah pencarian penuh drama dan teori konspirasi... ditemukan satu fakta mengejutkan 🎮✨</p>
+        <button onclick="finalStep()">Buka Fakta Rahasia</button>
+        <div class="footer">Dibuat oleh Raihan Adriansyah</div>
+    `;
+}
+
+function finalStep() {
+    document.getElementById("content").innerHTML = `
+        <h1>🎉SELAMAT ULANG TAHUN!🎉</h1>
+        <img src="gambar3.jpeg" alt="Foto Ulang Tahun">
+        <p>
+        Selamat bertambah umur 🎂<br><br>
+        semangat... nambah angka + beban kehidupan 😌<br><br>
+        Jadi lebih dewasa, 
+        sukses selalu, kurangi cerewetnya 😂<br><br>
+        Sehat selalu, rezekinya lancar, dan semoga drama hidupnya cuma sebatas sinetron, bukan kenyataan.
+        </p>
+        <button onclick="lastStep()">Lanjut</button>
+        <div class="footer">Website ini dibuat khusus oleh Raihan Adriansyah 🎂</div>
+    `;
+    createConfetti();
+}
+
+function lastStep() {
+    document.getElementById("content").innerHTML = `
+        <h1>🎁 Tentang Hadiah...</h1>
+        <p>
+        maaf ya 😅<br><br>
+        tidak bisa kasih kado yang bisa dibungkus pita besar untuk difoto buat story Instagram.<br><br>
+        hanya website sederhana ini yang bisa dibuat.<br><br>
+        Memang tidak bisa dimakan, tidak bisa dipajang di lemari,
+        tapi dibuat dengan niat baik dan sedikit kreativitas.<br><br>
+        Ya begitulah versinya. Simpel, tapi tulus.
+        </p>
+        <div class="footer">Dibuat dengan niat baik oleh Raihan Adriansyah 🎂</div>
+    `;
+}
+
+function createConfetti() {
+    for (let i = 0; i < 70; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = randomColor();
+        confetti.style.width = confetti.style.height = (Math.random() * 8 + 4) + "px";
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+        document.body.appendChild(confetti);
+    }
+}
+
+function randomColor() {
+    const colors = ["#ff4fa3", "#ffd700", "#87cefa", "#98fb98", "#ffb6c1", "#ffa07a"];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+</script>
+
+</body>
+</html>
